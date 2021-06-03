@@ -13,8 +13,8 @@ class NewTodoForm extends Component {
 	handleSubmit(evt) {
 		evt.preventDefault();
 		const newTask = { ...this.state, id: uuid() };
-        this.props.addTask(newTask);
-        this.setState({task: ""})
+		this.props.addTask(newTask);
+		this.setState({ task: '' });
 	}
 
 	handleChange(evt) {
@@ -29,8 +29,8 @@ class NewTodoForm extends Component {
 					id='task'
 					name='task'
 					placeholder='Enter your task'
-                    onChange={this.handleChange}
-                    value={this.state.task}
+					onChange={this.handleChange}
+					value={this.state.task}
 				/>
 				<button>Add Task</button>
 			</form>
