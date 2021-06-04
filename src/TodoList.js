@@ -9,6 +9,7 @@ class TodoList extends Component {
 		this.state = { tasks: [] };
 		this.addTask = this.addTask.bind(this);
 		this.renderTasks = this.renderTasks.bind(this);
+		this.deleteTask = this.deleteTask.bind(this);
 	}
 
 	addTask(taskObj) {
@@ -16,9 +17,21 @@ class TodoList extends Component {
 		console.log(this.state.tasks);
 	}
 
+	deleteTask(taskId) {
+		this.setState({
+			tasks: this.state.tasks.filter(task => task.id !== taskId),
+		});
+	}
+
 	renderTasks(evt) {
 		return this.state.tasks.map(task => (
-			<Todo task={task.task} isDone={task.isDone} id={task.id} key={task.id} />
+			<Todo
+				task={task.task}
+				isDone={task.isDone}
+				id={task.id}
+				key={task.id}
+				deleteTask={this.deleteTask}
+			/>
 		));
 	}
 
