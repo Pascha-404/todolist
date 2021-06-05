@@ -10,11 +10,11 @@ class TodoList extends Component {
 		this.addTask = this.addTask.bind(this);
 		this.renderTasks = this.renderTasks.bind(this);
 		this.deleteTask = this.deleteTask.bind(this);
+		this.editTask = this.editTask.bind(this);
 	}
 
 	addTask(taskObj) {
 		this.setState(curState => ({ tasks: [...curState.tasks, taskObj] }));
-		console.log(this.state.tasks);
 	}
 
 	deleteTask(taskId) {
@@ -23,14 +23,25 @@ class TodoList extends Component {
 		});
 	}
 
+	editTask(id, task) {
+		let tasks = this.state.tasks;
+		console.log(tasks);
+		const idx = tasks.findIndex(task => task.id === id);
+		console.log(idx);
+		tasks[idx].task = task;
+		console.log(tasks);
+		this.setState({ tasks });
+	}
+
 	renderTasks(evt) {
 		return this.state.tasks.map(task => (
 			<Todo
-				task={task.task}
+				task={task.newTask}
 				isDone={task.isDone}
 				id={task.id}
 				key={task.id}
 				deleteTask={this.deleteTask}
+				editTask={this.editTask}
 			/>
 		));
 	}
@@ -38,8 +49,8 @@ class TodoList extends Component {
 	render() {
 		return (
 			<section className='TodoList'>
-				<h1>Todo List</h1>
-				<NewTodoForm addTask={this.addTask} />
+				<h1 className='TodoList-title'>Todo List</h1>
+				<NewTodoForm addTask={this.addTask} editTask={this.editTask} />
 				<div className='TodoList-tasks'>{this.renderTasks()}</div>
 			</section>
 		);
