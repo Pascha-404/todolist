@@ -58,8 +58,8 @@ class TodoList extends Component {
 	changeIsDone(id) {
 		let tasks = this.getAndParse('tasks');
 		const idx = tasks.findIndex(task => task.id === id);
-		tasks[idx].isDone = !tasks[idx].isDone
-		this.stringifyAndSet(tasks, "tasks")
+		tasks[idx].isDone = !tasks[idx].isDone;
+		this.stringifyAndSet(tasks, 'tasks');
 		console.log(tasks[idx].isDone);
 	}
 
