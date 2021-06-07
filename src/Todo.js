@@ -43,6 +43,7 @@ class Todo extends Component {
 		let isDone = this.state.isDone;
 		isDone = !isDone;
 		this.setState({ isDone });
+		this.props.changeIsDone(this.props.id);
 	}
 
 	render() {
