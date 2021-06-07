@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NewTodoForm.css';
 import { v4 as uuid } from 'uuid';
+import addImg from './img/add.png';
 
 class NewTodoForm extends Component {
 	constructor(props) {
@@ -33,7 +34,9 @@ class NewTodoForm extends Component {
 					onChange={this.handleChange}
 					value={this.state.newTask}
 				/>
-				<button>Add Task</button>
+				<button className='NewTodoForm-btn'>
+					<img src={addImg} alt='add' />
+				</button>
 			</form>
 		);
 	}
