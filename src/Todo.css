@@ -38,6 +38,10 @@
 	cursor: pointer;
 }
 
+.Todo-btn:active {
+	transform: scale(0.98);
+}
+
 .Todo-editForm {
 	display: flex;
 	height: 100%;
